@@ -1,4 +1,4 @@
-# ai-advance-rag
+# RAG Pipeline
 
 ## RAG has two main phases that run at different times:
 
