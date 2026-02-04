@@ -2,8 +2,10 @@
 
 ## RAG has two main phases that run at different times:
 
-Offline / Indexing Pipeline (done once or periodically when data changes)
-Online / Query-Time Pipeline (runs every time a user asks something)
+The typical flow for building and running a Retrieval-Augmented Generation (RAG) pipeline (local or cloud, using open-source tools like LangChain / LlamaIndex / Haystack / LangGraph + Mistral 7B or similar models).
+
+- Offline / Indexing Pipeline (done once or periodically when data changes)
+- Online / Query-Time Pipeline (runs every time a user asks something)
 
 ## 1. Indexing Pipeline (Data → Vector Store)
 This prepares your knowledge base.
