@@ -10,13 +10,7 @@ git clone <repo-url>
 cd ai-advance-rag
 
 # 2. Install dependencies
-pip install -r requirements.txt
-# or using uv: uv pip install -r requirements.txt
-
-# 3. Configure environment
-cp .env.example .env
-# Edit .env and add your OPENAI_API_KEY
-```
+uv sync
 
 ## 🔄 Complete Evaluation Workflow
 
@@ -25,7 +19,7 @@ cp .env.example .env
 ```bash
 # Step 1: Ingest documents with basic chunking
 cd src/rag-pipeline
-python implementation/ingest.py
+uv run implementation/ingest.py
 
 # Expected output:
 # Starting RAG ingestion pipeline...
@@ -40,7 +34,7 @@ python implementation/ingest.py
 
 ```bash
 # Step 2: Test the chatbot UI
-python app.py
+uv run app.py
 # Uses: from implementation.answer import answer_question
 
 # Try sample questions:
@@ -51,7 +45,7 @@ python app.py
 
 ```bash
 # Step 3: Run evaluation
-python evaluator.py
+uv run evaluator.py
 # Uses: from evaluation.eval import evaluate_all_retrieval, evaluate_all_answers
 
 # Click "Run Evaluation" for both sections:
@@ -77,7 +71,7 @@ python evaluator.py
 
 ```bash
 # Step 1: Ingest with advanced techniques
-python pro_implementation/ingest.py
+uv run pro_implementation/ingest.py
 
 # Expected output:
 # Loaded 25 documents
@@ -96,7 +90,7 @@ python pro_implementation/ingest.py
 # To:     from pro_implementation.answer import answer_question
 
 # Run the improved chatbot
-python app.py
+uv run app.py
 
 # Try the SAME questions as before:
 # - "What does Insurellm do?"
@@ -113,7 +107,7 @@ python app.py
 # To:     from pro_implementation.answer import answer_question, fetch_context
 
 # Run evaluation
-python evaluator.py
+uv run evaluator.py
 
 # Click "Run Evaluation" for both sections again
 

@@ -115,24 +115,26 @@ ai-advance-rag/
 ### Step 1: Setup Environment
 
 ```bash
-# Install dependencies
-pip install -r requirements.txt  # or use uv/poetry
+# Install dependencies using uv
+uv sync
 
-# Configure API keys in .env
-OPENAI_API_KEY=your_key_here
+# Configure API keys in .env (copy from .env.example)
+cp .env.example .env
+# Edit .env and add your API keys
 ```
 
 ### Step 2: Run Basic RAG
 
 ```bash
 # 1. Ingest documents (basic chunking)
-python src/rag-pipeline/implementation/ingest.py
+cd src/rag-pipeline
+uv run implementation/ingest.py
 
 # 2. Launch UI
-python src/rag-pipeline/app.py  # Uses implementation/ by default
+uv run app.py  # Uses implementation/ by default
 
 # 3. Evaluate baseline (update imports in evaluator.py to use implementation/)
-python src/rag-pipeline/evaluator.py
+uv run evaluator.py
 ```
 
 **📸 Screenshot your baseline metrics!**
@@ -141,17 +143,17 @@ python src/rag-pipeline/evaluator.py
 
 ```bash
 # 1. Ingest with advanced chunking
-python src/rag-pipeline/pro_implementation/ingest.py
+uv run pro_implementation/ingest.py
 
 # 2. Update app.py imports:
 # Change: from implementation.answer import answer_question
 # To: from pro_implementation.answer import answer_question
 
 # 3. Launch UI
-python src/rag-pipeline/app.py
+uv run app.py
 
 # 4. Evaluate improvements (update imports to use pro_implementation/)
-python src/rag-pipeline/evaluator.py
+uv run evaluator.py
 ```
 
 **📸 Screenshot improved metrics and compare!**
