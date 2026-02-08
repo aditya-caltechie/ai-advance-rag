@@ -128,6 +128,12 @@ uv run evaluator.py
 
 ### Create Your Comparison Table
 
+**Example - Basic RAG Evaluation Results:**
+
+![Basic RAG Evaluation Results](../src/rag-pipeline/implementation/evals-basic.png)
+
+*Screenshot showing baseline metrics from the evaluation dashboard*
+
 | Metric | Basic RAG | Advanced RAG | Improvement |
 |--------|-----------|--------------|-------------|
 | **MRR** | _your result_ | _your result_ | _% gain_ |
