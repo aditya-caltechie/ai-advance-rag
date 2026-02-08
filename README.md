@@ -323,12 +323,3 @@ Final Answer (+ sources / confidence)
 - Agentic flows (query routing, fallback to web search)
 - Evaluation loop (RAGAS, TruLens, DeepEval)
 
----
-
-## 🤝 Contributing
-
-This project is for educational purposes, demonstrating RAG evolution. Feel free to experiment with different chunking strategies, embedding models, or retrieval techniques.
-
-## 📝 License
-
-MIT License - See LICENSE file for details
