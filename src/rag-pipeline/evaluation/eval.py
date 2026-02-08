@@ -4,8 +4,24 @@ from pydantic import BaseModel, Field
 from litellm import completion
 from dotenv import load_dotenv
 
+load_dotenv(override=True)
+
+# Import configuration to determine which implementation to use
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import RAG_MODE
+
 from evaluation.test import TestQuestion, load_tests
-from implementation.answer import answer_question, fetch_context
+
+# Dynamically import based on RAG_MODE
+if RAG_MODE == "basic":
+    from implementation.answer import answer_question, fetch_context
+    print("✓ Evaluation using Basic RAG (implementation/)")
+elif RAG_MODE == "pro":
+    from pro_implementation.answer import answer_question, fetch_context
+    print("✓ Evaluation using Advanced RAG (pro_implementation/)")
+else:
+    raise ValueError(f"Invalid RAG_MODE: {RAG_MODE}")
 
 
 load_dotenv(override=True)

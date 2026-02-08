@@ -118,22 +118,27 @@ ai-advance-rag/
 # Install dependencies using uv
 uv sync
 
-# Configure API keys in .env (copy from .env.example)
+# Configure API keys and RAG mode
 cp .env.example .env
 # Edit .env and add your API keys
+# Set RAG_MODE=basic or RAG_MODE=pro
 ```
 
 ### Step 2: Run Basic RAG
 
 ```bash
-# 1. Ingest documents (basic chunking)
 cd src/rag-pipeline
+
+# Set mode to basic in .env
+# RAG_MODE=basic
+
+# 1. Ingest documents (basic chunking)
 uv run implementation/ingest.py
 
-# 2. Launch UI
-uv run app.py  # Uses implementation/ by default
+# 2. Launch UI (automatically uses mode from .env)
+uv run app.py
 
-# 3. Evaluate baseline (update imports in evaluator.py to use implementation/)
+# 3. Evaluate baseline
 uv run evaluator.py
 ```
 
@@ -142,23 +147,30 @@ uv run evaluator.py
 ### Step 3: Run Advanced RAG
 
 ```bash
+# Set mode to pro in .env
+# RAG_MODE=pro
+
 # 1. Ingest with advanced chunking
 uv run pro_implementation/ingest.py
 
-# 2. Update app.py imports:
-# Change: from implementation.answer import answer_question
-# To: from pro_implementation.answer import answer_question
-
-# 3. Launch UI
+# 2. Launch UI (automatically switches to pro mode)
 uv run app.py
 
-# 4. Evaluate improvements (update imports to use pro_implementation/)
+# 3. Evaluate improvements
 uv run evaluator.py
 ```
 
 **📸 Screenshot improved metrics and compare!**
 
 **Expected Improvements:** 15-25% boost in MRR, nDCG, and answer quality scores.
+
+### 🔄 Easy Mode Switching
+
+No need to manually edit imports! Just change `RAG_MODE` in your `.env` file:
+- `RAG_MODE=basic` → Uses `implementation/`
+- `RAG_MODE=pro` → Uses `pro_implementation/`
+
+See [Switching Guide](docs/SWITCHING.md) for details.
 
 ---
 
@@ -192,7 +204,7 @@ uv run evaluator.py
 
 ### 🎯 Start Here
 - 📖 [**Complete Workflow Guide**](docs/workflow_guide.md) - Step-by-step instructions
-- 🗺️ [**Complete Journey**](docs/complete_journey.md) - Visual roadmap with timeline and costs
+- 🔄 [**Switching Guide**](docs/SWITCHING.md) - **Easy mode switching between basic and pro**
 
 ### 🏗️ Architecture
 - 🏛️ [**System Architecture**](docs/architecture.md) - **Complete system overview with all flow diagrams**
@@ -202,12 +214,14 @@ uv run evaluator.py
 
 ### 📖 Analysis & Reference
 - 🔍 [**Detailed Comparison**](docs/rag_vs_pro.md) - In-depth feature analysis
+- 🎯 [**Advanced RAG Techniques**](docs/advancedRagTechniques.md) - 10 advanced RAG techniques explained
 - 📑 [**Documentation Index**](docs/README.md) - Complete guide to all documentation
 - 📈 **Evaluation Results** - Run `evaluator.py` to see live metrics
 
 **Quick Navigation:**
-- 🆕 New to RAG? → [Complete Journey](docs/complete_journey.md)
+- 🆕 New to RAG? → [Workflow Guide](docs/workflow_guide.md)
 - 🏗️ Want architecture overview? → [System Architecture](docs/architecture.md)
+- 🔄 Need to switch modes? → [Switching Guide](docs/SWITCHING.md)
 - 🔨 Ready to build? → [Workflow Guide](docs/workflow_guide.md)
 - 📚 Need specific info? → [Documentation Index](docs/README.md)
 

@@ -14,8 +14,10 @@ Comprehensive guide to the Advanced RAG Pipeline project documentation.
 ### Core Documentation
 - **[System Architecture](architecture.md)** - Complete system design with flow diagrams
 - **[Workflow Guide](workflow_guide.md)** - Hands-on implementation guide with examples
+- **[Switching Guide](SWITCHING.md)** - Easy mode switching between basic and pro
 - **[Architecture Comparison](architecture_comparison.md)** - Side-by-side analysis with metrics
 - **[RAG vs Pro Comparison](rag_vs_pro.md)** - Detailed feature and cost comparison
+- **[Advanced RAG Techniques](advancedRagTechniques.md)** - 10 advanced RAG techniques explained
 
 ### Implementation Details
 - **[Basic RAG Architecture](basic_rag_architecture.md)** - Simple implementation flow
@@ -83,20 +85,23 @@ All documents include Mermaid diagrams for:
 ```bash
 # Setup
 uv sync
+cp .env.example .env
+# Edit .env: Set RAG_MODE=basic or RAG_MODE=pro
 
 # Basic RAG
 cd src/rag-pipeline
 uv run implementation/ingest.py
 uv run app.py
 
-# Advanced RAG
+# Advanced RAG (switch RAG_MODE=pro in .env)
 uv run pro_implementation/ingest.py
-# (update imports in app.py)
 uv run app.py
 
-# Evaluation
+# Evaluation (uses mode from .env)
 uv run evaluator.py
 ```
+
+**Note**: See [Switching Guide](SWITCHING.md) for easy mode switching.
 
 ## 📝 Document Versions
 

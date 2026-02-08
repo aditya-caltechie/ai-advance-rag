@@ -3,16 +3,27 @@ RAG Chatbot Web Interface
 
 Gradio-based UI for interacting with the RAG system.
 Shows both the conversation and retrieved context side-by-side.
+
+To switch between implementations, change RAG_MODE in config.py or set RAG_MODE environment variable.
 """
 
 import gradio as gr
 from dotenv import load_dotenv
 
-# Import answer function from basic or pro implementation
-from implementation.answer import answer_question
-# Alternative: from pro_implementation.answer import answer_question
-
 load_dotenv(override=True)
+
+# Import configuration to determine which implementation to use
+from config import RAG_MODE
+
+# Dynamically import the answer function based on RAG_MODE
+if RAG_MODE == "basic":
+    from implementation.answer import answer_question
+    print("✓ Using Basic RAG (implementation/)")
+elif RAG_MODE == "pro":
+    from pro_implementation.answer import answer_question
+    print("✓ Using Advanced RAG (pro_implementation/)")
+else:
+    raise ValueError(f"Invalid RAG_MODE: {RAG_MODE}")
 
 
 def format_context(context):
