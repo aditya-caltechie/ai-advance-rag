@@ -247,38 +247,6 @@ Try different embedding or LLM models:
 
 ---
 
-## 🐛 Troubleshooting
-
-### Issue: Rate Limit Errors
-```bash
-# Solution: Reduce parallel workers
-# In pro_implementation/ingest.py, line 24:
-WORKERS = 1  # Change from 3 to 1
-```
-
-### Issue: Out of Memory
-```bash
-# Solution: Process smaller batches
-# Reduce RETRIEVAL_K in answer.py:
-RETRIEVAL_K = 10  # Instead of 20
-```
-
-### Issue: Slow Evaluation
-```bash
-# Solution: Use fewer test cases
-# Edit evaluation/test.py to include fewer examples
-```
-
-### Issue: ChromaDB Errors
-```bash
-# Solution: Clear existing databases
-rm -rf src/rag-pipeline/vector_db/
-rm -rf src/rag-pipeline/preprocessed_db/
-# Then re-run ingestion
-```
-
----
-
 ## 📈 Success Criteria
 
 Your advanced RAG should show:
@@ -304,20 +272,3 @@ After completing this workflow, you'll understand:
 3. **Ranking methods**: Similarity vs semantic reranking
 4. **Evaluation metrics**: How to measure RAG quality
 5. **Trade-offs**: Cost vs accuracy vs latency
-
-## 📚 Next Steps
-
-1. **Read the comparison docs**: Deep dive into why advanced RAG works better
-2. **Experiment with variants**: Try different combinations
-3. **Build your own**: Apply these techniques to your domain
-4. **Share results**: Document your findings
-
----
-
-## 🤝 Need Help?
-
-- Review [docs/rag_vs_pro.md](rag_vs_pro.md) for detailed explanations
-- Check [docs/architecture_comparison.md](architecture_comparison.md) for visual guides
-- Examine the code comments - every function is documented
-
-Happy RAG building! 🚀
